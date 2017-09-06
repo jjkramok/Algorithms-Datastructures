@@ -1,0 +1,7 @@
+#gitignore
+*.csproj
+*.sln
+*.idea
+*/bin/
+*/obj/
+*/Properties/
