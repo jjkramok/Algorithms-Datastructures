@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.0.0
 MinimumVisualStudioVersion = 10.0.0.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Algorithms-Datastructures", "Algorithms-Datastructures.csproj", "{39245BA2-51AF-4394-B425-6EAAF43A3727}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Algorithms_Datastructures", "Algorithms-Datastructures.csproj", "{4514EDEC-AC36-419A-B1EC-E0FBC758C2D9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StrategyPattern", "StrategyPattern\StrategyPattern.csproj", "{947F2BB2-590E-4E4D-AB2E-12BE5FC3FCC6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ObserverPattern", "ObserverPattern\ObserverPattern.csproj", "{98575CC5-1323-4060-BD41-39D5E1A034BB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,6 +15,18 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4514EDEC-AC36-419A-B1EC-E0FBC758C2D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4514EDEC-AC36-419A-B1EC-E0FBC758C2D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4514EDEC-AC36-419A-B1EC-E0FBC758C2D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4514EDEC-AC36-419A-B1EC-E0FBC758C2D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{947F2BB2-590E-4E4D-AB2E-12BE5FC3FCC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{947F2BB2-590E-4E4D-AB2E-12BE5FC3FCC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{947F2BB2-590E-4E4D-AB2E-12BE5FC3FCC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{947F2BB2-590E-4E4D-AB2E-12BE5FC3FCC6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98575CC5-1323-4060-BD41-39D5E1A034BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98575CC5-1323-4060-BD41-39D5E1A034BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98575CC5-1323-4060-BD41-39D5E1A034BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98575CC5-1323-4060-BD41-39D5E1A034BB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
