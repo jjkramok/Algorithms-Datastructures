@@ -13,6 +13,7 @@ namespace Algorithms_Datastructures
         /* Calculates all primes from 2 up until and including p. */
         public static SortedSet<int> SieveOfEratosthenes(int p)
         {
+            Console.WriteLine(p);
             if (p < 2)
                 return null;
             
