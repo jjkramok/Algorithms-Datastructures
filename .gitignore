@@ -1,6 +1,10 @@
 #gitignore
-*.csproj
-*.sln
+
+## Both appear to be needed by Rider to show a project in the Solution Explorer :/
+#*.csproj
+#*.sln
+
+
 *.idea
 */bin/
 */obj/
