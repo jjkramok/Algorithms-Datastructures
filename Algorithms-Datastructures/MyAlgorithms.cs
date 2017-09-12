@@ -7,35 +7,40 @@ namespace Algorithms_Datastructures
     {
         public static void Main(string[] args)
         {
+            Console.WriteLine(string.Join(", ", SieveOfEratosthenes(53)));
         }
 
-        public List<int> sieveOfEratosthenes(int p)
+        /* Calculates all primes from 2 up until and including p. */
+        public static SortedSet<int> SieveOfEratosthenes(int p)
         {
-            SortedDictionary<int, bool> N = new SortedDictionary<int, bool>();
-            for (var i = 2; i < p; i++)
+            if (p < 2)
+                return null;
+            
+            SortedSet<int> n = new SortedSet<int>();
+            for (var i = 2; i < p+1; i++)
             {
-                N.Add(i, true);
+                n.Add(i);
             }
-            foreach (KeyValuePair<int, bool> entry in N)
+            
+            /*foreach (int primeCandidate in n)
             {
-                Console.WriteLine(entry.Key + ", ");
+                Console.Write(primeCandidate + ", ");
             }
-            foreach (KeyValuePair<int, bool> entry in N)
+            Console.Write('\n');*/
+        
+            SortedSet<int> temp = new SortedSet<int>(n);
+            foreach (int primeCandidate in temp)
             {
-                if (entry.Value)
+                //Start with first multiple of i as to not remove i itself (as i is a prime)
+                int i = primeCandidate * 2;
+                // Loop over all multiples of i and remove them from the list of possible primes (if it is a multiple of i, then it is divisable by i, and therefore not a prime
+                while (i < p)
                 {
-                    int i = entry.Key;
-                    while (i < p)
-                    {
-                        i += entry.Key;
-                    }
-                    
+                    n.Remove(i);
+                    i += primeCandidate;
                 }
-                    
             }
-            
-            
-            return null;
+            return n;
         }
     }
 }
