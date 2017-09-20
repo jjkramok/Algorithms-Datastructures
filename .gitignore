@@ -6,7 +6,7 @@
 
 
 *.idea
-*/bin/
-*/obj/
+**/bin/
+**/obj/
 */Properties/
 */Debug/

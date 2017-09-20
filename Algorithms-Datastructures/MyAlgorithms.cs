@@ -43,5 +43,21 @@ namespace Algorithms_Datastructures
             }
             return n;
         }
+
+        public long Fac(int n)
+        {
+            long f = 1;
+            for (int i = 1; i < n; i++)
+            {
+                f *= i;
+            }
+            return f;
+        }
+
+        public long FacRec(long n)
+        {
+            //todo base case
+            return n * FacRec(n - 1);
+        }
     }
 }
