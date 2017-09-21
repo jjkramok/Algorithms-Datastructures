@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ObserverPattern", "Observer
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommandPattern", "CommandPattern\CommandPattern.csproj", "{812492C7-1CFC-4AF8-9399-06EBC3718660}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathStorage", "MathStorage\MathStorage.csproj", "{0C8A73B2-4B68-4D5E-9CFF-7F6C6AA74B41}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{812492C7-1CFC-4AF8-9399-06EBC3718660}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{812492C7-1CFC-4AF8-9399-06EBC3718660}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{812492C7-1CFC-4AF8-9399-06EBC3718660}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C8A73B2-4B68-4D5E-9CFF-7F6C6AA74B41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C8A73B2-4B68-4D5E-9CFF-7F6C6AA74B41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C8A73B2-4B68-4D5E-9CFF-7F6C6AA74B41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C8A73B2-4B68-4D5E-9CFF-7F6C6AA74B41}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
