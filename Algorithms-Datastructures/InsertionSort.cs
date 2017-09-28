@@ -3,30 +3,27 @@ using System.Collections.Generic;
 
 namespace Algorithms_Datastructures
 {
-    public class InsertionSort<T> where  T : IComparable
+    public class InsertionSort
     {
-        public static List<T> Sort(List<T> list)
+        public static List<T> Sort<T>(List<T> l) where T : IComparable<T>
         {
-            if (list.Count <= 1)
-                return list;
-            List<T> res = new List<T>();
-            res.Add(list[0]);
-            for (int i = 0; i < list.Count; i++)
+            for (int i = 1; i < l.Count; i++)
             {
-                res = Insert(res, list[i]);
+                int j = i;
+                while (j > 0 && l[j - 1].CompareTo(l[j]) > 0)
+                {
+                    Swap(j-1, j, l);
+                    --j;
+                }
             }
-            return res;
+            return l;
         }
-
-        private static List<T> Insert(List<T> list, T element)
+    
+        private static void Swap<T>(int i, int j, List<T> l)
         {
-            int i = list.Count - 1;
-            while (list[i].CompareTo(element) > 0)
-            {
-                //TODO sorting
-                i--;
-            }
-            return null;
+            T temp = l[i];
+            l[i] = l[j];
+            l[j] = temp;
         }
     }
 }
