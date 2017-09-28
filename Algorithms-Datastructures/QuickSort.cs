@@ -10,7 +10,7 @@ namespace Algorithms_Datastructures
         {
             Random rnd = new Random();
             List<int> testcase = new List<int>();
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < 8; i++)
             {
                 testcase.Add(rnd.Next(0, 1001));
             }
@@ -19,7 +19,7 @@ namespace Algorithms_Datastructures
             Console.WriteLine("[{0}]", string.Join(", ", testcase));
         }
         
-        public static List<U> Sort<U>(List<U> l) where U : IComparable
+        public static List<U> Sort<U>(List<U> l) where U : IComparable<U>
         {
             if (l.Count <= 1)
             {
@@ -84,12 +84,28 @@ namespace Algorithms_Datastructures
             return lower;
         }
 
-        private static int FindPivotIndex<U>(List<U> list)
+        private static int FindPivotIndex<U>(List<U> list) where U : IComparable<U>
         {
             //TODO implement Median Of Three to find pivot
-            //T[] mot = {list[0], list[list.Count / 2], list[list.Count - 1]}; 
-            Random rnd = new Random();
-            return rnd.Next(0, list.Count);
+            //int[] indices = {0, list.Count / 2, list.Count - 1};
+            //U[] elements = {list[0], list[list.Count / 2], list[list.Count - 1]};
+            SortedDictionary<U, int> mot = new SortedDictionary<U, int>();
+            try
+            {
+                mot.Add(list[0], 0);
+                mot.Add(list[list.Count / 2], list.Count / 2);
+                mot.Add(list[list.Count - 1], list.Count - 1);
+            }
+            catch (ArgumentException e) { /* D/C handled later */ }
+
+            int i = 0;
+            foreach (KeyValuePair<U, int> e in mot)
+            {
+                if (mot.Count == 3 && i == 1)
+                    return e.Value;
+                i++;
+            }
+            return 0;
         }
 
         private static void Swap<U>(int i, int j, List<U> l)
