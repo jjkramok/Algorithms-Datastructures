@@ -15,10 +15,10 @@ namespace Algorithms_Datastructures
                 testcase.Add(rnd.Next(0, 1001));
             }
             Console.WriteLine("Start Test Case");
-            Console.WriteLine("[{0}]", string.Join(", ", testcase));
+            Console.WriteLine("[{0}] : length={1}", string.Join(", ", testcase), testcase.Count);
             //InsertionSort.Sort(testcase);
             Quicksort(testcase);
-            Console.WriteLine("[{0}]", string.Join(", ", testcase));
+            Console.WriteLine("[{0}] : length={1}", string.Join(", ", testcase), testcase.Count);
         }
 
 
@@ -29,51 +29,46 @@ namespace Algorithms_Datastructures
 
         private static void Sort<U>(List<U> l, int low, int high) where U : IComparable<U>
         {
+            // When insertionsort would be faster use insertionsort rather than recursively calling quicksort.
             const int insertionSortFaster = 10;
             if (l.Count <= insertionSortFaster)
             {
                 InsertionSort.Sort(l);
                 return;
             }
-            int lo = low;
-            int hi = high;
-            int mi = (lo + hi) / 2; // index of middle element
+            int i = low;
+            int j = high;
+            int mid = (i + j) / 2; // index of middle of the sublist.
             
             // Sort for Median of Three
-            if (l[hi].CompareTo(l[lo]) < 0)
-                Swap(hi, lo, l);
-            if (l[mi].CompareTo(l[lo]) < 0)
-                Swap(mi, lo, l);
-            if (l[hi].CompareTo(l[mi]) < 0)
-                Swap(hi, mi, l);
-            U pivot = l[mi];
+            if (l[j].CompareTo(l[i]) < 0)
+                Swap(j, i, l);
+            if (l[mid].CompareTo(l[i]) < 0)
+                Swap(mid, i, l);
+            if (l[j].CompareTo(l[mid]) < 0)
+                Swap(j, mid, l);
+            U pivot = l[mid]; // Mid points to the median of three, use that as pivot.
             
-            while (lo < hi)
+            while (i < j)
             {
-                //Console.WriteLine("p:{0} i:{1} j:{2}", pivot, lo, hi);
-                while (l[lo].CompareTo(pivot) < 0)
-                {
-                    lo++;
-                }
-                while (l[hi].CompareTo(pivot) > 0)
-                {
-                    hi--;
-                }
-
-                if (lo <= hi)
-                {
-                    Swap(lo++, hi--, l);
-                }
+                // Keep iterating through the list while things are still in the correct place.
+                while (l[i].CompareTo(pivot) < 0)
+                    i++;
+                // Keep iterating through the list while things are still in the correct place.
+                while (l[j].CompareTo(pivot) > 0)
+                    j--;
+                
+                // Swap elements that are both in the wrong part of the list.
+                if (i <= j)
+                    Swap(i++, j--, l);
             }
 
-            if (low < hi)
-            {
-                Sort(l, low, hi);
-            }
-            if (lo < high)
-            {
-                Sort(l, lo, high);
-            }
+            
+            if (low < j)
+                Sort(l, low, j);
+
+            if (i < high)
+                Sort(l, i, high);
         }
         
         private static void Swap<U>(int i, int j, List<U> l)

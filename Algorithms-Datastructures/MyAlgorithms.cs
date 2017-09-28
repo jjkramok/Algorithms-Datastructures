@@ -8,16 +8,6 @@ namespace Algorithms_Datastructures
         public static void Main(string[] args)
         {
             Console.WriteLine(string.Join(", ", SieveOfEratosthenes(53)));
-            Random rnd = new Random();
-            List<int> testcase = new List<int>();
-            for (int i = 0; i < 20; i++)
-            {
-                testcase.Add(rnd.Next(0, 101));
-            }
-            Console.WriteLine("[{0}]", string.Join(", ", testcase));
-            //testcase = Quicksort(testcase);
-            Console.WriteLine("[{0}]", string.Join(", ", testcase));
-            
         }
 
         /* Calculates all primes from 2 up until and including p. */
