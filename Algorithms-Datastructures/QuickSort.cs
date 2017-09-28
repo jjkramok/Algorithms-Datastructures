@@ -63,10 +63,10 @@ namespace Algorithms_Datastructures
                     Swap(i++, j--, l);
             }
 
-            
+            // If there are elements left over in the 'smaller than pivot'-part then continue quicksort on that part
             if (low < j)
                 Sort(l, low, j);
-
+            // If there are elements left over in the 'greater than pivot'-part then continue quicksort on that part
             if (i < high)
                 Sort(l, i, high);
         }
