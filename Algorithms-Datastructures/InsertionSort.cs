@@ -5,18 +5,16 @@ namespace Algorithms_Datastructures
 {
     public class InsertionSort
     {
-        public static List<T> Sort<T>(List<T> l) where T : IComparable<T>
+        public static void Sort<T>(List<T> l) where T : IComparable<T>
         {
             for (int i = 1; i < l.Count; i++)
             {
                 int j = i;
                 while (j > 0 && l[j - 1].CompareTo(l[j]) > 0)
                 {
-                    Swap(j-1, j, l);
-                    --j;
+                    Swap(j-1, j--, l);
                 }
             }
-            return l;
         }
     
         private static void Swap<T>(int i, int j, List<T> l)

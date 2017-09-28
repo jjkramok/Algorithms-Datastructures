@@ -15,7 +15,7 @@ namespace Algorithms_Datastructures
                 testcase.Add(rnd.Next(0, 101));
             }
             Console.WriteLine("[{0}]", string.Join(", ", testcase));
-            testcase = QuickSort.Sort(testcase);
+            //testcase = Quicksort(testcase);
             Console.WriteLine("[{0}]", string.Join(", ", testcase));
             
         }

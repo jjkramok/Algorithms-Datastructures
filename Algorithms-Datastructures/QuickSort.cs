@@ -1,113 +1,81 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 
 namespace Algorithms_Datastructures
 {
     public class QuickSort
     {
-
         public static void Main()
         {
             Random rnd = new Random();
             List<int> testcase = new List<int>();
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < 88; i++)
             {
                 testcase.Add(rnd.Next(0, 1001));
             }
+            Console.WriteLine("Start Test Case");
             Console.WriteLine("[{0}]", string.Join(", ", testcase));
-            testcase = Sort(testcase);
+            //InsertionSort.Sort(testcase);
+            Quicksort(testcase);
             Console.WriteLine("[{0}]", string.Join(", ", testcase));
+        }
+
+
+        public static void Quicksort<U>(List<U> l) where U : IComparable<U>
+        {
+            Sort(l, 0, l.Count - 1);
+        }
+
+        private static void Sort<U>(List<U> l, int low, int high) where U : IComparable<U>
+        {
+            const int insertionSortFaster = 10;
+            if (l.Count <= insertionSortFaster)
+            {
+                InsertionSort.Sort(l);
+                return;
+            }
+            int lo = low;
+            int hi = high;
+            int mi = (lo + hi) / 2; // index of middle element
+            
+            // Sort for Median of Three
+            if (l[hi].CompareTo(l[lo]) < 0)
+                Swap(hi, lo, l);
+            if (l[mi].CompareTo(l[lo]) < 0)
+                Swap(mi, lo, l);
+            if (l[hi].CompareTo(l[mi]) < 0)
+                Swap(hi, mi, l);
+            U pivot = l[mi];
+            
+            while (lo < hi)
+            {
+                //Console.WriteLine("p:{0} i:{1} j:{2}", pivot, lo, hi);
+                while (l[lo].CompareTo(pivot) < 0)
+                {
+                    lo++;
+                }
+                while (l[hi].CompareTo(pivot) > 0)
+                {
+                    hi--;
+                }
+
+                if (lo <= hi)
+                {
+                    Swap(lo++, hi--, l);
+                }
+            }
+
+            if (low < hi)
+            {
+                Sort(l, low, hi);
+            }
+            if (lo < high)
+            {
+                Sort(l, lo, high);
+            }
         }
         
-        public static List<U> Sort<U>(List<U> l) where U : IComparable<U>
-        {
-            if (l.Count <= 1)
-            {
-                return l;
-            }
-
-            
-            int pivotIndex = FindPivotIndex(l);
-            U pivot = l[pivotIndex];
-            Console.WriteLine("PivIndex: {0} \t Pivot: {1}", pivotIndex, pivot);
-
-            //Move pivot to last position
-            Swap(pivotIndex, l.Count - 1, l);
-            Console.WriteLine("Swapped Pivot:\n [{0}]", string.Join(", ", l));
-
-            // TODO ensure list.Count > 1
-            // TODO do insertion sort on smaller lists
-            // TODO list with 3 elements or more (see above) should be sorted with insertion sort and returned (avoid doing mot on a three element list)
-            // Loop from both direction (ignore pivot!) and swap variables into their respective parts of the list
-            int i = 0;
-            int j = l.Count - 2;
-            while (i < j)
-            {
-                Console.WriteLine("p:{0} i:{1} j:{2}", pivot, i, j);
-                //Console.WriteLine("28 CompareTo 36 => {0}", 28.CompareTo(36));
-                if (l[i].CompareTo(pivot) > 0)
-                {
-                    if (l[j].CompareTo(pivot) < 0)
-                    {
-                        Console.WriteLine("Swapping from I {0} with {1}", l[i], l[j]);
-                        Swap(i, j, l);
-                    }
-                }
-                else
-                {
-                    i++;
-                }
-
-                if (l[j].CompareTo(pivot) < 0)
-                {
-                    if (l[i].CompareTo(pivot) > 0)
-                    {
-                        Console.WriteLine("Swapping from J {0} with {1}", l[i], l[j]);
-                        Swap(i, j, l);
-                    }
-                }
-                else
-                {
-                    j--;
-                }
-            }
-
-            // Swap pivot back into the 'greater than pivot' part of the list
-            Swap(i, l.Count - 1, l);
-
-            Console.WriteLine("lower: [{0}]", string.Join(", ", l.GetRange(0, i+1)));
-            Console.WriteLine("higher: [{0}]", string.Join(", ", l.GetRange(i, l.Count - i - 1)));
-            // Continue QuickSorting on both sublists and then stitch the results together
-            List<U> lower = Sort(l.GetRange(0, i+1));
-            List<U> greater = Sort(l.GetRange(i, l.Count - i - 1));
-            lower.AddRange(greater);
-            return lower;
-        }
-
-        private static int FindPivotIndex<U>(List<U> list) where U : IComparable<U>
-        {
-            //TODO implement Median Of Three to find pivot
-            //int[] indices = {0, list.Count / 2, list.Count - 1};
-            //U[] elements = {list[0], list[list.Count / 2], list[list.Count - 1]};
-            SortedDictionary<U, int> mot = new SortedDictionary<U, int>();
-            try
-            {
-                mot.Add(list[0], 0);
-                mot.Add(list[list.Count / 2], list.Count / 2);
-                mot.Add(list[list.Count - 1], list.Count - 1);
-            }
-            catch (ArgumentException e) { /* D/C handled later */ }
-
-            int i = 0;
-            foreach (KeyValuePair<U, int> e in mot)
-            {
-                if (mot.Count == 3 && i == 1)
-                    return e.Value;
-                i++;
-            }
-            return 0;
-        }
-
         private static void Swap<U>(int i, int j, List<U> l)
         {
             U temp = l[i];
