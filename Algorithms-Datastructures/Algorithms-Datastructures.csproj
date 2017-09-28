@@ -42,9 +42,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="InsertionSort.cs" />
+    <Compile Include="Lists\FCNS.cs" />
+    <Compile Include="Lists\SinglyLinkedList.cs" />
+    <Compile Include="Lists\Stack.cs" />
     <Compile Include="MyAlgorithms.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuickSort.cs" />
+    <Compile Include="Trees\BinarySearchTree.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Graphs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
