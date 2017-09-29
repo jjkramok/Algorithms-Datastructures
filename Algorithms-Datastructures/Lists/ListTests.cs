@@ -7,7 +7,7 @@ namespace Algorithms_Datastructures.Lists
         public ListTests()
         {
             Console.WriteLine("::FCNS Test::");
-            FCNS<int> fcns = new FCNS<int>();
+            FCNSTree<int> fcns = new FCNSTree<int>();
         }
     }
 }
