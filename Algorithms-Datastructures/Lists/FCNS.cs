@@ -4,59 +4,71 @@ namespace Algorithms_Datastructures.Lists
 {
     public class FCNS<T> where T : IComparable<T>
     {
-        T data;
-        FCNS<T> firstChild;
-        FCNS<T> nextSibling;
-
+        private FCNSNode<T> root;
+        
         public FCNS() {}
 
-        public FCNS(T data) {
-            this.data = data;
+        public FCNS(FCNSNode<T> r) {
+            root = r;
         }
 
-        public FCNS(T data, FCNS<T> child, FCNS<T> sibling) {
-            this.data = data;
-            this.firstChild = child;
-            this.nextSibling = sibling;
+        public void PrintPreOrder()
+        {
+            PrintPreOrder(root);
         }
-
-        public void printPreOrder() {
-            if (data != null) {
-                Console.Write(data);
+        
+        private void PrintPreOrder(FCNSNode<T> node) {
+            if (node.Data != null) {
+                Console.Write(node.Data);
                 Console.Write("\t");
             } else {
                 Console.Write("(...)\t");
             }
-            if (firstChild != null)
-                firstChild.printPreOrder();
-            if (nextSibling != null) {
+            if (node.FirstChild != null)
+                PrintPreOrder(node.FirstChild);
+            if (node.NextSibling != null) {
                 Console.WriteLine("\n");
-                nextSibling.printPreOrder();
+                PrintPreOrder(node.NextSibling);
             }
         }
 
+        public int Size()
+        {
+            return -1; //TODO implement
+        }
+
+        /*
         public T getData() {
-            return data;
+            return _data;
         }
 
         public void setData(T data) {
-            this.data = data;
+            _data = data;
         }
 
         public FCNS<T> getFirstChild() {
-            return firstChild;
+            return _firstChild;
         }
 
         public void setFirstChild(FCNS<T> firstChild) {
-            this.firstChild = firstChild;
+            _firstChild = firstChild;
         }
 
         public FCNS<T> getNextSibling() {
-            return nextSibling;
+            return _nextSibling;
         }
 
-        public void setNextSibling(FCNS<T> nextSibling) {
-            this.nextSibling = nextSibling;
+        public void setNextSibling(FCNS<T> nextSibling)
+        {
+            root.NextSibling = nextSibling;
+        }
+        */
+
+        public class FCNSNode<T> where T : IComparable<T>
+        {
+            public T Data { get; set; }
+            public FCNSNode<T> FirstChild { get; set; }
+            public FCNSNode<T> NextSibling { get; set; }
         }
     }
 }

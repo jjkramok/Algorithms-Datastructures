@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.Eventing.Reader;
 
 namespace Algorithms_Datastructures
 {
     public class QuickSort
     {
-        public static void Main()
+        public QuickSort()
         {
             Random rnd = new Random();
             List<int> testcase = new List<int>();
@@ -14,15 +13,14 @@ namespace Algorithms_Datastructures
             {
                 testcase.Add(rnd.Next(0, 1001));
             }
-            Console.WriteLine("Start Test Case");
+            Console.WriteLine("Start Test Case of Quicksort");
             Console.WriteLine("[{0}] : length={1}", string.Join(", ", testcase), testcase.Count);
-            //InsertionSort.Sort(testcase);
-            Quicksort(testcase);
+            Sort(testcase);
             Console.WriteLine("[{0}] : length={1}", string.Join(", ", testcase), testcase.Count);
         }
 
 
-        public static void Quicksort<U>(List<U> l) where U : IComparable<U>
+        public static void Sort<U>(List<U> l) where U : IComparable<U>
         {
             Sort(l, 0, l.Count - 1);
         }
