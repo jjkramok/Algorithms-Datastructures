@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Algorithms_Datastructures.Trees
+namespace PreparationTest
 {
     public class BinarySearchTree<T> where T : IComparable<T>
     {
@@ -16,7 +16,6 @@ namespace Algorithms_Datastructures.Trees
                 Root = new BinaryNode<T>(key);
             else 
                 Insert(Root, key);
-            
         }
 
         public void Insert(BinaryNode<T> currNode, T key) 
@@ -83,7 +82,7 @@ namespace Algorithms_Datastructures.Trees
             public void SetRight(BinaryNode<T> right) {
                 _right = right;
             }
-
+            
             public override string ToString()
             {
                 return _item.ToString();

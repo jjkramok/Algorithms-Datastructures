@@ -1,13 +1,41 @@
 ﻿using System;
 
-namespace Algorithms_Datastructures.Trees
+namespace PreparationTest
 {
-    public class BinarySearchTree<T> where T : IComparable<T>
+    public class Excercise2<T> where T : IComparable<T>
     {
         public BinaryNode<T> Root;
 
-        public BinarySearchTree() {
+        public Excercise2() {
             Root = null;
+        }
+
+        public BinaryNode<T> GiveSecondSmallestElement()
+        {
+            if (Root == null)
+                return null;
+            BinaryNode<T> prev = null; // Backtracking reference
+            BinaryNode<T> curr = Root;
+
+            // Find smallest node in BST
+            while (curr.GetLeft() != null)
+            {
+                prev = curr;
+                curr = curr.GetLeft();
+            }
+            // Return parent if there are no siblings
+            if (curr.GetRight() == null)
+            {
+                return prev;
+            }
+
+            // Find smallest element that is bigger than the orginal smallest element
+            curr = curr.GetRight();
+            while (curr.GetLeft() != null)
+            {
+                curr = curr.GetLeft();
+            }    
+            return curr;
         }
 
         public void Insert(T key)
@@ -16,9 +44,8 @@ namespace Algorithms_Datastructures.Trees
                 Root = new BinaryNode<T>(key);
             else 
                 Insert(Root, key);
-            
         }
-
+        
         public void Insert(BinaryNode<T> currNode, T key) 
         {
             if (key.CompareTo(currNode.GetElement()) < 0) {
@@ -39,8 +66,7 @@ namespace Algorithms_Datastructures.Trees
         }
         
         public void PrintInOrder() {
-            if (Root != null)
-                PrintInOrder(Root);
+            PrintInOrder(Root);
         }
 
         private void PrintInOrder(BinaryNode<T> node) {
@@ -58,6 +84,8 @@ namespace Algorithms_Datastructures.Trees
 
             public BinaryNode(T item) {
                 _item = item;
+                _left = null;
+                _right = null;
             }
 
             public T GetElement() {
@@ -83,7 +111,7 @@ namespace Algorithms_Datastructures.Trees
             public void SetRight(BinaryNode<T> right) {
                 _right = right;
             }
-
+            
             public override string ToString()
             {
                 return _item.ToString();
