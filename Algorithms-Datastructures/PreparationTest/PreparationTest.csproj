@@ -4,12 +4,12 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4514EDEC-AC36-419A-B1EC-E0FBC758C2D9}</ProjectGuid>
+    <ProjectGuid>{C6BF20E3-3E5C-4B38-883C-A3048A76CD18}</ProjectGuid>
     <ProjectTypeGuids>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Algorithms_Datastructures</RootNamespace>
-    <AssemblyName>Algorithms_Datastructures</AssemblyName>
+    <RootNamespace>PreparationTest</RootNamespace>
+    <AssemblyName>PreparationTest</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -41,20 +41,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Graphs\Graph.cs" />
-    <Compile Include="InsertionSort.cs" />
-    <Compile Include="Lists\CircularLinkedList.cs" />
-    <Compile Include="Lists\FCNSTree.cs" />
-    <Compile Include="Lists\ListTests.cs" />
-    <Compile Include="Lists\Queue.cs" />
-    <Compile Include="Lists\SinglyLinkedList.cs" />
-    <Compile Include="Lists\Stack.cs" />
-    <Compile Include="MyAlgorithms.cs" />
+    <Compile Include="BinarySearchTree.cs" />
+    <Compile Include="Excercise2.cs" />
+    <Compile Include="Excersice1.cs" />
+    <Compile Include="Excersice3.cs" />
+    <Compile Include="Excersice4.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="QuickSort.cs" />
-    <Compile Include="Trees\AVLTree.cs" />
-    <Compile Include="Trees\BinarySearchTree.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
