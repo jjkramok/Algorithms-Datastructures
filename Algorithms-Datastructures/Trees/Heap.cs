@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.SqlClient;
 using System.Dynamic;
 
 namespace Algorithms_Datastructures.Trees
@@ -24,16 +25,24 @@ namespace Algorithms_Datastructures.Trees
                 i /= 2; // Point to percolated item
             }
             if (++_i >= _heap.Length)
-            {
-                T[] biggerHeap = new T[_heap.Length * 2];
-                _heap.CopyTo(biggerHeap);
-                //TODO increase heap array size
+            { 
+                IncreaseHeapSize();
             }
         }
 
         public int Size()
         {
             return _i - 1;
+        }
+
+        public void IncreaseHeapSize()
+        {
+            T[] res = new T[_heap.Length * 2];
+            for (int i = 1; i < _heap.Length; i++)
+            {
+                res[i] = _heap[i];
+            }
+            _heap = res;
         }
 
     }
