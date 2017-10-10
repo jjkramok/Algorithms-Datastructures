@@ -42,6 +42,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Graphs\Graph.cs" />
+    <Compile Include="Graphs\IGraph.cs" />
+    <Compile Include="Graphs\IVertex.cs" />
+    <Compile Include="Graphs\SEGraph.cs" />
     <Compile Include="InsertionSort.cs" />
     <Compile Include="Lists\CircularLinkedList.cs" />
     <Compile Include="Lists\FCNSTree.cs" />

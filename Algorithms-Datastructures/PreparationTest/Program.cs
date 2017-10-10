@@ -29,28 +29,28 @@ namespace PreparationTest
             Console.WriteLine("\nExcersice 3");
             
             Console.WriteLine("\nExcersice 4");
-            Excersice4 graph = new Excersice4();
-            graph.AddVertex("A");
-            graph.AddVertex("B");
-            graph.AddVertex("C");
-            graph.AddVertex("D");
-            graph.AddVertex("E");
-            graph.AddVertex("F");
-            graph.AddVertex("G");
-            graph.AddVertex("H");
-            graph.AddVertex("K");
-            graph.AddEdge("A", "B");
-            graph.AddEdge("A", "G");
-            graph.AddEdge("C", "B");
-            graph.AddEdge("D", "F");
-            graph.AddEdge("E", "C");
-            graph.AddEdge("F", "F");
-            graph.AddEdge("G", "F");
-            graph.AddEdge("G", "H");
-            graph.AddEdge("H", "E");
-            graph.AddEdge("H", "K");
-            graph.AddEdge("K", "G");
-            Console.WriteLine(graph);
+//            Excersice4 graph = new Excersice4();
+//            graph.AddVertex("A");
+//            graph.AddVertex("B");
+//            graph.AddVertex("C");
+//            graph.AddVertex("D");
+//            graph.AddVertex("E");
+//            graph.AddVertex("F");
+//            graph.AddVertex("G");
+//            graph.AddVertex("H");
+//            graph.AddVertex("K");
+//            graph.AddEdge("A", "B");
+//            graph.AddEdge("A", "G");
+//            graph.AddEdge("C", "B");
+//            graph.AddEdge("D", "F");
+//            graph.AddEdge("E", "C");
+//            graph.AddEdge("F", "F");
+//            graph.AddEdge("G", "F");
+//            graph.AddEdge("G", "H");
+//            graph.AddEdge("H", "E");
+//            graph.AddEdge("H", "K");
+//            graph.AddEdge("K", "G");
+//            Console.WriteLine(graph);
 
         }
     }
