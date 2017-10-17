@@ -6,6 +6,7 @@ namespace Algorithms_Datastructures.Trees
     {
         public TreesTest()
         {
+            Console.WriteLine("Tree Tests");
             Heap<int> heap = new Heap<int>();
             heap.Insert(1);
             heap.Insert(3);
