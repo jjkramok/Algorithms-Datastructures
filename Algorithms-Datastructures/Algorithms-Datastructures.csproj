@@ -59,6 +59,7 @@
     <Compile Include="Trees\AVLTree.cs" />
     <Compile Include="Trees\BinarySearchTree.cs" />
     <Compile Include="Trees\Heap.cs" />
+    <Compile Include="Trees\TreesTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="SpecialExcersices" />

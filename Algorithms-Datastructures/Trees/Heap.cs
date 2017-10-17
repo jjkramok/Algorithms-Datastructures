@@ -45,5 +45,35 @@ namespace Algorithms_Datastructures.Trees
             _heap = res;
         }
 
+        public override string ToString()
+        {
+            // Math.ceil(Math.log(_i, 2)) == amount of rows in the heap
+            // 2^(#rows-1) is index of first element of last row AND also the length of that row (no. of elements)
+            // Current row = Math.Ceiling(Math.log(i, 2))
+            string res = "";
+            int NoOfRows = (int) Math.Ceiling(Math.Log(Convert.ToDouble(_i), 2.0));
+            int lengthOfLastRow = (int) Math.Pow(2, NoOfRows - 1);
+            for (int i = 1; i < _i; i++)
+            {
+                Console.WriteLine("i: {0} and lolr: {1} loop cond.: {2}", i, lengthOfLastRow, lengthOfLastRow / (i + 1));
+                if (Math.Log(Convert.ToDouble(i), 2.0) == Math.Round(Math.Log(Convert.ToDouble(i), 2.0)))
+                {
+                    Console.WriteLine("newline at: {0}", Math.Log(Convert.ToDouble(i), 2.0));
+                    res += '\n';
+                    for (int j = 0; j < lengthOfLastRow / (i + 1) + 1; j++)
+                    {
+                        res += "\t";
+                    }
+                }
+               
+                res += _heap[i];
+                for (int j = 0; j < lengthOfLastRow / (i + 1) ; j++)
+                {
+                    res += "\t";
+                }
+            }
+            
+            return res;
+        }
     }
 }
