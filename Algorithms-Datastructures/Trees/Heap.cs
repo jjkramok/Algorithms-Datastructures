@@ -9,6 +9,10 @@ namespace Algorithms_Datastructures.Trees
         private T[] _heap = new T[10];
         private int _i = 1; // used as index, points to first empty spot that is not on index 0
         
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="item"></param>
         public void Insert(T item)
         {
             // Insert in last spot and then percolate up
