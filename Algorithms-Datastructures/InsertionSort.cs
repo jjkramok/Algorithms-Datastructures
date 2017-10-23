@@ -16,6 +16,18 @@ namespace Algorithms_Datastructures
                 }
             }
         }
+        
+        public static void Sort<T>(List<T> l, int low, int high) where T : IComparable<T>
+        {
+            for (int i = low+1; i <= high; i++)
+            {
+                int j = i;
+                while (j > 0 && l[j - 1].CompareTo(l[j]) > 0)
+                {
+                    Swap(j-1, j--, l);
+                }
+            }
+        }
     
         private static void Swap<T>(int i, int j, List<T> l)
         {

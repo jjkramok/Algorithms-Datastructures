@@ -28,12 +28,13 @@ namespace Algorithms_Datastructures
         private static void Sort<U>(List<U> l, int low, int high) where U : IComparable<U>
         {
             // When insertionsort would be faster use insertionsort rather than recursively calling quicksort.
-            const int insertionSortFaster = 10;
-            if (l.Count <= insertionSortFaster)
+            const int insertionSortFaster = 3;
+            if (high - low <= insertionSortFaster)
             {
-                InsertionSort.Sort(l);
+                InsertionSort.Sort(l, low, high);
                 return;
             }
+
             int i = low;
             int j = high;
             int mid = (i + j) / 2; // index of middle of the sublist.
@@ -55,7 +56,6 @@ namespace Algorithms_Datastructures
                 // Keep iterating through the list while things are still in the correct place.
                 while (l[j].CompareTo(pivot) > 0)
                     j--;
-                
                 // Swap elements that are both in the wrong part of the list.
                 if (i <= j)
                     Swap(i++, j--, l);
