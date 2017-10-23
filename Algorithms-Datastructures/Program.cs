@@ -11,7 +11,8 @@ namespace Algorithms_Datastructures
             Console.WriteLine("Hello World");
             //new ListTests();
             //new TreesTest();
-            new MergeSort();
+            //new MergeSort();
+            new ShellSort();
         }
     }
 }
