@@ -49,6 +49,14 @@ namespace Algorithms_Datastructures.Trees
             }
             Heap<int> bulkHeap = new Heap<int>(bulk);
             Console.WriteLine(bulkHeap);
+            
+            BinarySearchTree<int> bst = new BinarySearchTree<int>();
+            for (int i = 0; i < 20; i++)
+            {
+                bst.Insert(rng.Next(0, 100));
+            }
+            Console.WriteLine(bst);
+            bst.PrintInOrder();
         }
     }
 }

@@ -9,9 +9,9 @@ namespace Algorithms_Datastructures
         {
             Random rnd = new Random();
             List<int> testcase = new List<int>();
-            for (int i = 0; i < 88; i++)
+            for (int i = 0; i < 20; i++)
             {
-                testcase.Add(rnd.Next(0, 1001));
+                testcase.Add(rnd.Next(0, 101));
             }
             Console.WriteLine("Start Test Case of Quicksort");
             Console.WriteLine("[{0}] : length={1}", string.Join(", ", testcase), testcase.Count);
