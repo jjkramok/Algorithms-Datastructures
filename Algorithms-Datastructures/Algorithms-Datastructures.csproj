@@ -52,6 +52,7 @@
     <Compile Include="Lists\Queue.cs" />
     <Compile Include="Lists\SinglyLinkedList.cs" />
     <Compile Include="Lists\Stack.cs" />
+    <Compile Include="MergeSort.cs" />
     <Compile Include="MyAlgorithms.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
