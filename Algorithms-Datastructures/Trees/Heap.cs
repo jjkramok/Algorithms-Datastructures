@@ -14,7 +14,6 @@ namespace Algorithms_Datastructures.Trees
 
         public Heap(T[] bulk)
         {
-            Console.WriteLine("Build heap constr");
             BuildHeap(bulk);
         }
         
@@ -23,10 +22,6 @@ namespace Algorithms_Datastructures.Trees
             return _heap[1];
         }
         
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="item"></param>
         public void Insert(T item)
         {
             // TODO reduce array size when heap shrinks
@@ -56,19 +51,16 @@ namespace Algorithms_Datastructures.Trees
         /// <returns></returns>
         public void BuildHeap(T[] bulk)
         {
-            Console.WriteLine("Build heap method");
             // Test with heaps of size 2 or 3
             _heap = new T[bulk.Length + 2];
             _i = bulk.Length + 1;
             Array.Copy(bulk, 0, _heap, 1, bulk.Length);
-            //Console.WriteLine(ToString());
-            //Console.WriteLine("Bulk length: {0} vs Heap length: {1}", bulk.Length, _i - 1);
             
             // Start at the first index where swapping makes sense. So start at a node with children.
             int noOfRows = (int) Math.Ceiling(Math.Log(Convert.ToDouble(_i), 2.0));
             int lengthOfPenultimateRow = (int) Math.Pow(2, noOfRows - 2);
             int startIndex = lengthOfPenultimateRow + lengthOfPenultimateRow - 1;
-            Console.WriteLine("Start index: {0}", startIndex);
+            Console.WriteLine("Starting at: {0}", _heap[startIndex]);
             Console.WriteLine(ToString());
             for (int i = startIndex; i > 0; i--)
             {
