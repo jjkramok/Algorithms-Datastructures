@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom.Compiler;
 using System.Data.SqlClient;
 using System.Dynamic;
 
@@ -8,6 +9,19 @@ namespace Algorithms_Datastructures.Trees
     {
         private T[] _heap = new T[10];
         private int _i = 1; // used as index, points to first empty spot that is not on index 0
+
+        public Heap() {}
+
+        public Heap(T[] bulk)
+        {
+            Console.WriteLine("Build heap constr");
+            BuildHeap(bulk);
+        }
+        
+        public T FindMin()
+        {
+            return _heap[1];
+        }
         
         /// <summary>
         /// 
@@ -15,6 +29,7 @@ namespace Algorithms_Datastructures.Trees
         /// <param name="item"></param>
         public void Insert(T item)
         {
+            // TODO reduce array size when heap shrinks
             // Insert in last spot and then percolate up
             _heap[_i] = item;
             
@@ -34,6 +49,76 @@ namespace Algorithms_Datastructures.Trees
             }
         }
 
+        /// <summary>
+        /// Assumes bulk array is completely filled
+        /// </summary>
+        /// <param name="bulk"></param>
+        /// <returns></returns>
+        public void BuildHeap(T[] bulk)
+        {
+            Console.WriteLine("Build heap method");
+            // Test with heaps of size 2 or 3
+            _heap = new T[bulk.Length + 2];
+            _i = bulk.Length + 1;
+            Array.Copy(bulk, 0, _heap, 1, bulk.Length);
+            //Console.WriteLine(ToString());
+            //Console.WriteLine("Bulk length: {0} vs Heap length: {1}", bulk.Length, _i - 1);
+            
+            // Start at the first index where swapping makes sense. So start at a node with children.
+            int noOfRows = (int) Math.Ceiling(Math.Log(Convert.ToDouble(_i), 2.0));
+            int lengthOfPenultimateRow = (int) Math.Pow(2, noOfRows - 2);
+            int startIndex = lengthOfPenultimateRow + lengthOfPenultimateRow - 1;
+            Console.WriteLine("Start index: {0}", startIndex);
+            Console.WriteLine(ToString());
+            for (int i = startIndex; i > 0; i--)
+            {
+                PercolateDown(i);
+            }
+        }
+
+        private void PercolateDown(int node)
+        {
+            int noOfRows = (int) Math.Ceiling(Math.Log(Convert.ToDouble(_i), 2.0));
+            int lengthOfPenultimateRow = (int) Math.Pow(2, noOfRows - 2);
+            int startIndex = lengthOfPenultimateRow + lengthOfPenultimateRow - 1;
+            
+            // assume parent i, then childs are: 2i + 1 and 2i
+            
+            while (node <= startIndex)
+            {
+                if (node * 2 >= _i)
+                {
+                    // child is out of bounds (this parent has no children)
+                    return;
+                }
+
+                int smallestIndex = node;
+                T smallest = _heap[smallestIndex];
+                if (!(node * 2 >= _i) && smallest.CompareTo(_heap[2 * node]) > 0)
+                {
+                    smallestIndex = 2 * node;
+                    smallest = _heap[smallestIndex];
+                }
+                if (!(node * 2 + 1 >= _i) && smallest.CompareTo(_heap[2 * node + 1]) > 0)
+                {
+                    smallestIndex = 2 * node + 1;
+                    smallest = _heap[smallestIndex];
+                }
+                if (smallestIndex == node)
+                {
+                    return; // node is smallest of itself and its children
+                }
+                
+                // Percolate the new 
+                T temp = _heap[node];
+                _heap[node] = smallest;
+                _heap[smallestIndex] = temp;
+                
+                // Keep percolating with the newly percolated item until it is in place
+                node = smallestIndex;
+            }
+        }
+        
         public int Size()
         {
             return _i - 1;
@@ -51,8 +136,6 @@ namespace Algorithms_Datastructures.Trees
 
         public override string ToString()
         {
-            
-            
             // Math.ceil(Math.log(_i, 2)) == amount of rows in the heap
             // 2^(#rows-1) is index of first element of last row AND also the length of that row (no. of elements)
             // Current row = Math.Ceiling(Math.log(i, 2))
@@ -63,19 +146,15 @@ namespace Algorithms_Datastructures.Trees
             // OF(r) = OF(r-1) / 2
             
             string res = "";
-            string spacing = " ";
+            string spacing = "  "; // mostly length of elements (string length) + 1 space is enough
             int NoOfRows = (int) Math.Ceiling(Math.Log(Convert.ToDouble(_i), 2.0));
             int lengthOfLastRow = (int) Math.Pow(2, NoOfRows - 1);
-            int firstPerRowOffset = lengthOfLastRow;
             for (int i = 1; i < _i; i++)
             {
-                //Console.WriteLine("i: {0} and lolr: {1} loop cond.: {2}", i, lengthOfLastRow, lengthOfLastRow / (i + 1));
                 if (Math.Log(Convert.ToDouble(i), 2.0) == Math.Round(Math.Log(Convert.ToDouble(i), 2.0)))
                 {
                     res += '\n';
-                    //Console.WriteLine("i: {0} and lolr: {1} loop cond.: {2}", i, lengthOfLastRow, lengthOfLastRow / (i + 1));
                     int offset = OffsetFactor((int) Math.Ceiling(Math.Log(i, 2))+1, lengthOfLastRow);
-                    //Console.WriteLine("i: {0} and lolr: {1} first indent loop cond.: {2}", i, lengthOfLastRow, firstPerRowOffset / 2);
                     for (int j = 0; j < offset; j++)
                     {
                         res += spacing;
@@ -83,45 +162,17 @@ namespace Algorithms_Datastructures.Trees
                 }
                
                 res += _heap[i];
-                //Console.WriteLine(Math.Floor(lengthOfLastRow / (Math.Log(i, 2) + 1)));
-
                 int spacingFactor = SpacingFactor((int) Math.Floor(Math.Log(i, 2)) + 1, lengthOfLastRow);
-                Console.WriteLine("index: {0} rowNumb: {1} with spacing: {2}", i, (int) Math.Ceiling(Math.Log(i, 2)) + 1, spacingFactor);
+                //Console.WriteLine("index: {0} rowNumb: {1} with spacing: {2}", i, (int) Math.Ceiling(Math.Log(i, 2)) + 1, spacingFactor);
                 for (int j = 0; j < spacingFactor; j++)
                 {
                     res += spacing;
                 }
             }
-            
-            /*
-            string res = "";
-            int NoOfRows = (int) Math.Ceiling(Math.Log(Convert.ToDouble(_i), 2.0));
-            int lengthOfLastRow = (int) Math.Pow(2, NoOfRows - 1);
-            for (int i = 1; i < _i; i++)
-            {
-                Console.WriteLine("i: {0} and lolr: {1} loop cond.: {2}", i, lengthOfLastRow, lengthOfLastRow / (i + 1));
-                if (Math.Log(Convert.ToDouble(i), 2.0) == Math.Round(Math.Log(Convert.ToDouble(i), 2.0)))
-                {
-                    Console.WriteLine("newline at: {0}", Math.Log(Convert.ToDouble(i), 2.0));
-                    res += '\n';
-                    for (int j = 0; j < lengthOfLastRow / (i + 1) + 1; j++)
-                    {
-                        res += "\t";
-                    }
-                }
-               
-                res += _heap[i];
-                for (int j = 0; j < lengthOfLastRow / (i + 1) ; j++)
-                {
-                    res += "\t";
-                }
-            }
-            */
-            
             return res;
         }
         
-        // current row number and length of bottom row
+        // current row number and length of bottom row; helper function for ToString
         private int OffsetFactor(int currRow, int lobr)
         {
             if (currRow == 1)
@@ -129,6 +180,7 @@ namespace Algorithms_Datastructures.Trees
             return OffsetFactor(currRow - 1, lobr) / 2;
         }
 
+        // helper function for ToString
         private int SpacingFactor(int currRow, int lobr)
         {
             if (currRow == 1)
