@@ -13,7 +13,7 @@ namespace Algorithms_Datastructures
             new TreesTest();
             //new MergeSort();
             //new ShellSort();
-            new QuickSort();
+            //new QuickSort();
         }
     }
 }

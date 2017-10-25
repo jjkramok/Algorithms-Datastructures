@@ -47,7 +47,6 @@
     <Compile Include="Graphs\SEGraph.cs" />
     <Compile Include="InsertionSort.cs" />
     <Compile Include="Lists\CircularLinkedList.cs" />
-    <Compile Include="Lists\FCNSTree.cs" />
     <Compile Include="Lists\ListTests.cs" />
     <Compile Include="Lists\Queue.cs" />
     <Compile Include="Lists\SinglyLinkedList.cs" />
@@ -60,6 +59,7 @@
     <Compile Include="ShellSort.cs" />
     <Compile Include="Trees\AVLTree.cs" />
     <Compile Include="Trees\BinarySearchTree.cs" />
+    <Compile Include="Trees\FCNSTree.cs" />
     <Compile Include="Trees\Heap.cs" />
     <Compile Include="Trees\TreesTest.cs" />
   </ItemGroup>
