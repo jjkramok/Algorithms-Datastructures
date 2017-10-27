@@ -152,32 +152,34 @@ namespace Algorithms_Datastructures.Trees
 
         private string ToStringHelper(BinaryNode<T> startNode)
         {
+            const string frontSpaceString = " ";
+            const string nullNodeCharacter = "_";
+            const string nodeSpacingString = " ";
+            
             List<List<BinaryNode<T>>> layers = new List<List<BinaryNode<T>>>();
             List<BinaryNode<T>> layer = new List<BinaryNode<T>>();
             // add root to first layer
             layers.Add(layer);
             layer.Add(startNode);
-
+            
             int row = 0;
             while (row < Height())
             {
-                layer = new List<BinaryNode<T>>();
-                layers.Add(layer); //TODO check this, first entry should be the root nodeso the next forloop doesnt terminate
+                layers.Add(new List<BinaryNode<T>>());
+                layer = layers[row];
 
-                Console.WriteLine("layer count : {0}", layer.Count);
                 /* Add all childs of every node in this layer and add a marker if null */
                 for (int i = 0; i < layer.Count; i++)
                 {
-                    Console.WriteLine("here it is: {0}", layer[i]);
                     if (layer[i] != null)
                     {
-                        layers[i + 1].Add(layer[i].GetLeft());
-                        layers[i + 1].Add(layer[i].GetRight());
+                        layers[row + 1].Add(layer[i].GetLeft());
+                        layers[row + 1].Add(layer[i].GetRight());
                     }
                     else
                     {
-                        layers[i + 1].Add(null);
-                        layers[i + 1].Add(null);
+                        layers[row + 1].Add(null);
+                        layers[row + 1].Add(null);
                     }
                 }
                 /* go to next row */
@@ -194,7 +196,7 @@ namespace Algorithms_Datastructures.Trees
                 /* add front spaces to this layer */
                 for(int i = 0; i < frontSpacing; i++)
                 {
-                    res += "_";
+                    res += frontSpaceString;
                 }
                 
                 /* print every node in this layer */
@@ -205,7 +207,7 @@ namespace Algorithms_Datastructures.Trees
 
                     if (layers[layerIndex][nodeIndex] == null)
                     {
-                        res += "X";
+                        res += nullNodeCharacter;
                     }
                     else
                     {
@@ -214,10 +216,10 @@ namespace Algorithms_Datastructures.Trees
 
                     for (int i = 0; i < elementSpacing; i++)
                     {
-                        res += "-";
+                        res += nodeSpacingString;
                     }
                 }
-                res += "\n{}";
+                res += "\n";
             }
             
            
@@ -230,16 +232,10 @@ namespace Algorithms_Datastructures.Trees
             private T _item;
             private BinaryNode<T> _left;
             private BinaryNode<T> _right;
-            private bool _fake = false;
 
             public BinaryNode(T item)
             {
                 _item = item;
-            }
-            
-            public BinaryNode(bool fake)
-            {
-                _fake = fake;
             }
 
             public T GetValue()
@@ -255,11 +251,6 @@ namespace Algorithms_Datastructures.Trees
             public BinaryNode<T> GetLeft()
             {
                 return _left;
-            }
-            
-            public bool IsFake()
-            {
-                return _fake;
             }
 
             public void SetLeft(BinaryNode<T> left)

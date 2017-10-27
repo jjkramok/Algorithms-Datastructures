@@ -18,7 +18,7 @@ namespace Algorithms_Datastructures.Trees
             Random rng = new Random();
             Console.WriteLine("::Binary Tree::");
             BinaryTree<int> bt = new BinaryTree<int>();
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < 10; i++)
             {
                 bt.Insert(rng.Next(0, 100));
             }
