@@ -59,8 +59,12 @@
     <Compile Include="ShellSort.cs" />
     <Compile Include="Trees\AVLTree.cs" />
     <Compile Include="Trees\BinarySearchTree.cs" />
+    <Compile Include="Trees\BinaryTree.cs" />
     <Compile Include="Trees\FCNSTree.cs" />
     <Compile Include="Trees\Heap.cs" />
+    <Compile Include="Trees\IBinaryNode.cs" />
+    <Compile Include="Trees\IBinarySearchTree.cs" />
+    <Compile Include="Trees\IBinaryTree.cs" />
     <Compile Include="Trees\TreesTest.cs" />
   </ItemGroup>
   <ItemGroup>

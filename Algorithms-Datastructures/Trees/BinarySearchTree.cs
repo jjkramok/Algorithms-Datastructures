@@ -2,7 +2,7 @@
 
 namespace Algorithms_Datastructures.Trees
 {
-    public class BinarySearchTree<T> where T : IComparable<T>
+    public class BinarySearchTree<T> : IBinarySearchTree<T> where T : IComparable<T>
     {
         public BinaryNode<T> Root;
 
@@ -36,6 +36,28 @@ namespace Algorithms_Datastructures.Trees
                     currNode.SetRight(new BinaryNode<T>(key));
                 }
             }
+        }
+        
+        public void Remove(T x)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RemoveMin()
+        {
+            throw new NotImplementedException();
+        }
+
+        public T FindMin()
+        {
+            if (Root == null)
+                return default(T);
+            BinaryNode<T> currNode = Root;
+            while (currNode.GetLeft() != null)
+            {
+                currNode = currNode.GetLeft();
+            }
+            return currNode.GetElement();
         }
         
         public void PrintInOrder() {

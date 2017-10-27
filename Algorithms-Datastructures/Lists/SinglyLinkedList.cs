@@ -66,6 +66,38 @@ namespace Algorithms_Datastructures.Lists
         }
     }
 
+        public Node<T> GetFront()
+        {
+            return _head;
+        }
+
+        public Node<T> GetLast()
+        {
+            if (_head == null)
+                return null;
+            Node<T> last = _head;
+            while (last.getNext() != null)
+            {
+                last = last.getNext();
+            }
+            return last;
+        }
+
+        public int Length()
+        {
+            int size = 0;
+            if (_head == null)
+                return size;
+            Node<T> node = _head;
+            size++;
+            while (node.getNext() != null)
+            {
+                size++;
+                node = node.getNext();
+            }
+            return size;
+        }
+
     /**
     public void reverse<T>() {
         //Empty and single node lists are useless for this operation
@@ -98,13 +130,13 @@ namespace Algorithms_Datastructures.Lists
         String result = "";
 
         for (Node<T> current = _head; current != null; current = current.getNext()) {
-            result = result + current.toString() + "";
+            result = result + current + "";
         }
         return result;
     }
 
-    private class Node<T> {
-        private T data;
+    public class Node<T> {
+        public T data;
         private Node<T> next;
 
         public Node(T data) {
@@ -119,7 +151,7 @@ namespace Algorithms_Datastructures.Lists
             this.next = next;
         }
 
-        public String toString() {
+        public override string ToString() {
                 return data + "";
         }
     }

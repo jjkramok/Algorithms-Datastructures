@@ -9,9 +9,24 @@ namespace Algorithms_Datastructures.Trees
             Console.WriteLine("Tree Tests");
             //BSTTest();
             //HeapTest();;
-            FCNSTreeTest();
+            //FCNSTreeTest();
+            BinaryTreeTest();
         }
 
+        public void BinaryTreeTest()
+        {
+            Random rng = new Random();
+            Console.WriteLine("::Binary Tree::");
+            BinaryTree<int> bt = new BinaryTree<int>();
+            for (int i = 0; i < 20; i++)
+            {
+                bt.Insert(rng.Next(0, 100));
+            }
+            Console.WriteLine(bt);
+            Console.WriteLine("Statistics of the BT. Size: {0} and Height: {1}", bt.Size(), bt.Height());
+            //bt.PrintInOrder();
+        }
+        
         public static void FCNSTreeTest()
         {
             Random rng = new Random();
