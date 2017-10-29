@@ -1,7 +1,4 @@
 ﻿using System;
-using System.CodeDom.Compiler;
-using System.Data.SqlClient;
-using System.Dynamic;
 
 namespace Algorithms_Datastructures.Trees
 {
@@ -20,6 +17,19 @@ namespace Algorithms_Datastructures.Trees
         public T FindMin()
         {
             return _heap[1];
+        }
+
+        public T Pop()
+        {
+            // Base case: empty heap
+            if (_i < 1)
+                return default(T);
+            
+            // Keep the original min safe and put last element in the top spot and repeatedly percolate down.
+            T res = _heap[1];
+            _heap[1] = _heap[--_i];
+            PercolateDown(1);
+            return res;
         }
         
         public void Insert(T item)
@@ -68,6 +78,10 @@ namespace Algorithms_Datastructures.Trees
             }
         }
 
+        /// <summary>
+        /// Given index node it will find its new location in the heap by continueally swapping downwards in the heap.
+        /// </summary>
+        /// <param name="node"></param>
         private void PercolateDown(int node)
         {
             int noOfRows = (int) Math.Ceiling(Math.Log(Convert.ToDouble(_i), 2.0));
