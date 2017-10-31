@@ -1,5 +1,6 @@
 ﻿namespace DecoratorPattern
 {
+    // Concrete Decorator
     public class Cream : Decorator
     {
         private new double Price = 0.15;
