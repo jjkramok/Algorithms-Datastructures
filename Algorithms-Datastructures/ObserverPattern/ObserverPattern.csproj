@@ -43,7 +43,9 @@
   <ItemGroup>
     <Compile Include="GameWorld.cs" />
     <Compile Include="IObserver.cs" />
+    <Compile Include="Mailbox.cs" />
     <Compile Include="Observable.cs" />
+    <Compile Include="Observer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
