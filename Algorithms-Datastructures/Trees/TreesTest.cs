@@ -45,7 +45,7 @@ namespace Algorithms_Datastructures.Trees
             FCNSTree<int>.FCNSNode<int> n10 = new FCNSTree<int>.FCNSNode<int>(11);
             FCNSTree<int>.FCNSNode<int> n11 = new FCNSTree<int>.FCNSNode<int>(12);
             
-            fcns.root.FirstChild = n0;
+            fcns.Root.FirstChild = n0;
             n0.NextSibling = n1;
             n1.NextSibling = n2;
             n2.NextSibling = n3;

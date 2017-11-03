@@ -4,17 +4,17 @@ namespace Algorithms_Datastructures.Trees
 {
     public class FCNSTree<T> where T : IComparable<T>
     {
-        public FCNSNode<T> root;
+        public FCNSNode<T> Root;
         
         public FCNSTree() {}
 
         public FCNSTree(FCNSNode<T> r) {
-            root = r;
+            Root = r;
         }
 
         public void PrintPreOrder()
         {
-            PrintPreOrder(root, 0);
+            PrintPreOrder(Root, 0);
         }
         
         private void PrintPreOrder(FCNSNode<T> node, int indent) {
@@ -35,9 +35,9 @@ namespace Algorithms_Datastructures.Trees
 
         public int Size()
         {
-            if (root == null)
+            if (Root == null)
                 return 0;
-            return Size(root);
+            return Size(Root);
         }
 
         public int Size(FCNSNode<T> node)
