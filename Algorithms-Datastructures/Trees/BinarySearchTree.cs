@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace Algorithms_Datastructures.Trees
 {
@@ -41,12 +42,58 @@ namespace Algorithms_Datastructures.Trees
         
         public void Remove(T x)
         {
-            throw new NotImplementedException();
+            if (Root == null)
+                return;
+            
+            // Traverse tree until we find the desired node; And remember prev node so we can remove node with element X later
+            BinaryNode<T> lookup = Root;
+            BinaryNode<T> prev = Root;
+            while (lookup.GetElement().CompareTo(x) != 0)
+            {
+                if (lookup.GetElement().CompareTo(x) < 0)
+                {
+                    if (lookup.GetLeft() == null)
+                        return; // x not in tree
+                    prev = lookup;
+                    lookup = lookup.GetLeft();
+                }
+                else if (lookup.GetElement().CompareTo(x) > 0)
+                {
+                    if (lookup.GetRight() == null)
+                        return; // x not in tree
+                    prev = lookup;
+                    lookup = lookup.GetRight();
+                }
+            }
+            
+            // Remove desired node from reference
+            if (prev.GetRight().Equals(lookup))
+                prev.SetRight(null);
+            else if (prev.GetLeft().Equals(lookup))
+                prev.SetLeft(null);
         }
 
         public void RemoveMin()
         {
-            throw new NotImplementedException();
+            if (Root == null)
+                return;
+            
+            // Initialize loop variables
+            BinaryNode<T> currNode = Root;
+            BinaryNode<T> prev = Root;
+            
+            // Traverse BST and look for the penultimate smallest node (single last left node).
+            while (currNode.GetLeft() != null)
+            {
+                prev = currNode;
+                currNode = currNode.GetLeft();
+            }
+            
+            // Check if Root is the only node or not, and remove the smallest node from the tree.
+            if (prev.Equals(Root))
+                Root = null;
+            else 
+                prev.SetLeft(null);
         }
 
         public T FindMin()
