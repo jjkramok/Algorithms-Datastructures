@@ -9,8 +9,8 @@ namespace Algorithms_Datastructures
         public static void Main()
         {
             Console.WriteLine("Hello World");
-            //new ListTests();
-            new TreesTest();
+            new ListTests();
+            //new TreesTest();
             //new MergeSort();
             //new ShellSort();
             //new QuickSort();

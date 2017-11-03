@@ -27,6 +27,22 @@ namespace Algorithms_Datastructures.Lists
             q.Enqueue(rng.Next(0, 100));
             Console.WriteLine("[{0}]", string.Join(", ", q.getQueue()));
             Console.WriteLine("[{0}]", string.Join(", ", q));
+            
+            Console.WriteLine("::Priority Queue Test::");
+            PriorityQueue<int> pq = new PriorityQueue<int>();
+            for (int i = 0; i < 10; i++)
+            {
+                pq.Enqueue(rng.Next(0, 100));
+            }
+            pq.Dequeue();
+            pq.Enqueue(rng.Next(1));
+            pq.Enqueue(rng.Next(1));
+            pq.Enqueue(rng.Next(0, 100));
+            pq.Enqueue(rng.Next(98));
+            pq.Dequeue();
+            pq.Enqueue(rng.Next(0, 100));
+            pq.Enqueue(rng.Next(0, 100));
+            Console.WriteLine("{0}", pq.GetMinHeap());
         }
     }
 }

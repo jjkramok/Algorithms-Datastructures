@@ -30,5 +30,10 @@ namespace Algorithms_Datastructures.Lists
         {
             return _q.Size();
         }
+
+        public Heap<T> GetMinHeap()
+        {
+            return _q;
+        }
     }
 }
